@@ -4,7 +4,7 @@ import airflow
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 
-from src.data.kafka_producer import generate_stream
+from .src.data.kafka_producer import generate_stream
 
 PATH_STREAM_SAMPLE = "/data/stream_sample.p"
 

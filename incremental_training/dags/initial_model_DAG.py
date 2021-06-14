@@ -3,7 +3,7 @@ import airflow
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 
-from src.models.initial_model_functions import load_preprocess, fit_model
+from .src.models.initial_model_functions import load_preprocess, fit_model
 
 PATH_STREAM_SAMPLE = "/data/stream_sample.p"
 PATH_TEST_SET = "/data/test_set.p"

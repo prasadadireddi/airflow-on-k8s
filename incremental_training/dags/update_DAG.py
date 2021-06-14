@@ -4,9 +4,9 @@ import airflow
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 
-from src.data.data_functions import get_data_from_kafka, load_data
-from src.models.update_functions import load_current_model, update_model, data_to_archive
-from src.preprocessing.preprocessing_functions import preprocessing
+from .src.data.data_functions import get_data_from_kafka, load_data
+from .src.models.update_functions import load_current_model, update_model, data_to_archive
+from .src.preprocessing.preprocessing_functions import preprocessing
 
 #CLIENT = 'kafka:9092'
 CLIENT = 'mip-bd-vm285.mip.storage.hpecorp.net:10026'
