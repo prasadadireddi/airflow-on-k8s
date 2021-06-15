@@ -32,7 +32,7 @@ start = DummyOperator(task_id='debug_task', dag=dag)
 python_task = KubernetesPodOperator(namespace='default',
                                     image="python:3.6",
                                     cmds=["python", "-c"],
-                                    arguments=["print('hello world')"],
+                                    arguments=["import time; print('sleeping for 3sec'); time.sleep(3)"],
                                     labels={"foo": "bar"},
                                     name="passing-python",
                                     task_id="passing-task-python",
