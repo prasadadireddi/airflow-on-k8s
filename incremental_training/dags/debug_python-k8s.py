@@ -2,12 +2,24 @@
 This is an example dag for using the KubernetesPodOperator.
 """
 import logging
+import os
 
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import \
     KubernetesPodOperator
 from airflow.operators.dummy_operator import DummyOperator
 from datetime import datetime, timedelta
+try:
+   from src.models.initial_model_functions import load_preprocess, fit_model
+except:
+   print("import failed1")
+
+try:
+   from .src.models.initial_model_functions import load_preprocess, fit_model
+except:
+   print("import failed2")
+
+print(os.getcwd())
 
 # log = logging.getLogger(__name__)
 
@@ -32,7 +44,7 @@ start = DummyOperator(task_id='debug_task', dag=dag)
 python_task = KubernetesPodOperator(namespace='default',
                                     image="python:3.6",
                                     cmds=["python", "-c"],
-                                    arguments=["import time; print('sleeping for 60sec'); time.sleep(60)"],
+                                    arguments=["import time; print('sleeping for 1500sec'); time.sleep(1500)"],
                                     labels={"foo": "bar"},
                                     name="passing-python",
                                     task_id="passing-task-python",
